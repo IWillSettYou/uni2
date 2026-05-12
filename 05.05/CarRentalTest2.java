@@ -1,7 +1,6 @@
-package rental.tests;
 
-import static check.CheckThat.*;
-import static check.CheckThat.Lang.*;
+import static check.Use.*;
+import static check.Use.Lang.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

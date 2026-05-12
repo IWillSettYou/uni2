@@ -1,4 +1,3 @@
-package rental.tests;
 
 import java.util.Locale;
 

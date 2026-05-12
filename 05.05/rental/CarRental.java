@@ -7,7 +7,7 @@ import java.lang.*;
 import java.util.*;
 
 public class CarRental{
-    public List<Car> cars;
+    private List<Car> cars;
 
     public CarRental(String filename){
         this.cars = new ArrayList<>();
@@ -68,15 +68,32 @@ public class CarRental{
         if(cars.size() == 0) return -1.0;
         double whatIsthisEven = 0.0;
         double numberus = 0.0;
-        for(int i = 0; i < cars.size(); i++){
-            whatIsthisEven += cars.get(i) * (i + 1);
+        for(int i = 1; i <= cars.size(); i++){
+            whatIsthisEven += cars.get(i-1).getPrice() * (i);
             numberus += i;
         }
-        return whatIsthisEven / numberus;
+        return whatIsthisEven / (numberus);
     }
 
     public ArrayList<Car> sale(){
-        if((int)Math.random() % 2 == 0) 
+        ArrayList<Car> newCars = new ArrayList<Car>(); 
+        for(Car car : cars){
+            if((int)Math.Random() * 100) % 2 == 0) {
+                car.decreasePrice();
+                newCars.add(car);
+            }
+            newCars.add(car);
+        }
+
+        return newCars;
+    }
+
+    public Car rentCheapest() {
+        if (cars.size() == 0) return null;
+        insertionSort();
+        Car car = cars.get(0);
+        cars.remove(0);
+        return car;
     }
 
 }

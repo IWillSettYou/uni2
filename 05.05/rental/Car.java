@@ -7,7 +7,7 @@ public class Car{
     private String licensePlate;
     private double price;
 
-    private static final double MAX_PRICE = 100000000;
+    private static final double MAX_PRICE = 500;
 
     private Car(String brand, String licensePlate, double price){
         this.brand = brand;
@@ -40,11 +40,13 @@ public class Car{
     }
 
     public void decreasePrice(){
-        if(this.price > 10) this.price -= 10;
+        if(this.price == MAX_PRICE) return;
+        if(this.price >= 10) this.price -= 10;
     }
 
     public boolean isCheaperThan(Car other){
-        return (this.price < other.price);
+        if(other.price == this.price) return false;
+        return (other.price > this.price);
     }
 
     @Override
